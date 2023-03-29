@@ -10,9 +10,9 @@ const authenticate = require("../middlewares/auth.midellware");
 const router = Router();
 // TODO username, email, password
 
-router.get("/api/v1/users/:username/conversations", getUserConversations)
-router.get("/api/v1/users",authenticate,  getAllUsers)
-router.post("/api/v1/users", createUserValidator, createUser)
-router.put("/api/v1/users/:id", updateUserValidator, updateUser);
+router.get("/api/v1/users/:username/conversations", authenticate, getUserConversations)
+router.get("/api/v1/users", authenticate, getAllUsers)
+router.post("/api/v1/users", createUserValidator, authenticate, createUser)
+router.put("/api/v1/users/:id", updateUserValidator, authenticate, updateUser);
 
 module.exports = router;

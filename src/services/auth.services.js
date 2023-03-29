@@ -5,7 +5,7 @@ class AuthServices {
     try {
       const token = jwt.sign(payload, "andresm", {
         algorithm: "HS512",
-        expiresIn: "5m",
+        expiresIn: "20m",
       });
       return token;
     } catch (error) {
