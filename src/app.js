@@ -3,6 +3,7 @@ const cors = require("cors");
 const morgan = require("morgan");
 const db = require("./utils/database");
 const initModels = require("./models/initModels");
+const authRoutes = require("./routes/auth.routes");
 const userRoutes = require("./routes/user.routes");
 const conversationsRoutes = require("./routes/conversations.routes");
 const messagesRoutes = require("./routes/messages.routes");
@@ -29,6 +30,7 @@ db.sync({ alter: false }) // alterar los atributos
   .then(() => console.log("Base de datos sync"))
   .catch((error) => console.log(error));
 
+app.use(authRoutes);
 app.use(userRoutes);
 app.use(conversationsRoutes);
 app.use(messagesRoutes);
